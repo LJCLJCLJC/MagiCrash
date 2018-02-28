@@ -1,0 +1,7 @@
+﻿id(int),path(string),desc(string),affect(int),addTye(int),value(float),effect(string)
+1,healthItem01,小体力回复,0,0,4,healthItemEft
+2,healthItem02,大体力回复,0,0,8,healthItemEft
+3,maxHealthItem,上升4点体力,1,0,4,maxHealthItemEft
+4,defenceItem,上升一点防御,2,0,1,defenceItemEft
+5,attackItem,上升一点攻击,3,0,1,attackItemEft
+6,shootSpeedItem,攻击速度上升0.1倍,4,1,0.1,shootSpeedItemEft

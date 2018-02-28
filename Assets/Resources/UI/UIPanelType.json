@@ -1,0 +1,40 @@
+{
+    "infoList": [
+        {
+            "panelIDString": "ConfirmPanel",
+            "path": "UI/ConfirmPanel"
+        },
+        {
+            "panelIDString": "TestPanel",
+            "path": "UI/TestPanel"
+        },
+        {
+            "panelIDString": "StartPanel",
+            "path": "UI/StartScene/StartPanel"
+        },
+        {
+            "panelIDString": "ChoosePlayerPanel",
+            "path": "UI/StartScene/ChoosePlayerPanel"
+        },
+        {
+            "panelIDString": "CreatePlayerPanel",
+            "path": "UI/StartScene/CreatePlayerPanel"
+        },
+        {
+            "panelIDString": "SettingPanel",
+            "path": "UI/StartScene/SettingPanel"
+        },
+        {
+            "panelIDString": "GamePanel",
+            "path": "UI/GameScene/GamePanel"
+        },
+        {
+            "panelIDString": "TipPanel",
+            "path": "UI/GameScene/TipPanel"
+        },
+        {
+            "panelIDString": "PausePanel",
+            "path": "UI/GameScene/PausePanel"
+        }
+    ]
+}
