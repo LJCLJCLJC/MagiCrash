@@ -26,7 +26,7 @@ public class ObjectPool
     {
         if (obj.GetComponent<PoolItem>() == null)
         {
-            Debug.LogError("没有找到PoolItem");
+            Debug.LogError("没有找到PoolItem"+ obj.name);
             return;
         }
         objQueue = new Queue<PoolItem>();

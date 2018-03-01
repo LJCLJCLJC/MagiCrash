@@ -9,6 +9,7 @@ public class BossTrigger : MonoBehaviour {
         if (!inBossBattle)
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.BOSS_BATTLE, null);
+            GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, true);
             inBossBattle = true;
         }
     }

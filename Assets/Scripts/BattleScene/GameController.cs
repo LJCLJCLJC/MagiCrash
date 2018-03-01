@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour {
     public int needKey = 3;
     public bool showingTip = false;
     public bool canOpen = false;
+    public Transform leftButton;
+    public Transform RightTop;
     private PlayerData player;
     private int hasKey;
 

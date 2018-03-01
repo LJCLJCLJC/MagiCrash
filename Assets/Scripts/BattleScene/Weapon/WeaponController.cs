@@ -42,8 +42,16 @@ public class WeaponController : MonoBehaviour
             }
             shotBegin += Time.deltaTime;
         }
+        if (Input.GetKeyUp(KeyCode.Alpha1)&&weaponList.Contains(StaticDataPool.Instance.staticWeaponPool.GetStaticDataVo(1)))
+        {
+            GameRoot.Instance.evt.CallEvent(GameEventDefine.CHANGE_WEAPON, 1);
+        }
+        if (Input.GetKeyUp(KeyCode.Alpha2) && weaponList.Contains(StaticDataPool.Instance.staticWeaponPool.GetStaticDataVo(2)))
+        {
+            GameRoot.Instance.evt.CallEvent(GameEventDefine.CHANGE_WEAPON, 2);
+        }
     }
-
+    
     private void FixedUpdate()
     {
         if (GameRoot.Instance.CanMove)
@@ -124,7 +132,7 @@ public class WeaponController : MonoBehaviour
             {
                 weapons[i].Show();
                 shotBegin = weapons[i].weaponVo.chargeTime;
-                GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, weapons[i].weaponVo.effect);
+                GameRoot.Instance.evt.CallEvent(GameEventDefine.CHANGE_ANTLER_MAGIC, weapons[i].weaponVo.color);
             }
             else
             {

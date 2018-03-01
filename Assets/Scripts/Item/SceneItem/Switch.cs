@@ -8,9 +8,12 @@ public class Switch : MonoBehaviour {
     public string gateId = "a1";
     public string code = "1";
     public bool opened = false;
+    public float startY = -0.7f;
+    public float endY = -0.9f;
     private KeyValuePair<string, string> pair;
 	void Start ()
     {
+        transform.position = new Vector3(transform.position.x, startY, transform.position.z);
         pair = new KeyValuePair<string, string>(gateId, code);
         GameRoot.Instance.evt.AddListener(GameEventDefine.RESET_SWITCH, ResetSwitch);
         
@@ -21,7 +24,7 @@ public class Switch : MonoBehaviour {
         {
             opened = true;
             GameRoot.Instance.evt.CallEvent(GameEventDefine.OPEN_GATE, pair);
-            transform.DOMoveY(-1f, 1f);
+            transform.DOMoveY(endY, 1f);
         }
     }
     private void ResetSwitch(object obj)
@@ -29,7 +32,7 @@ public class Switch : MonoBehaviour {
         string id = (string)obj;
         if (id == gateId)
         {
-            transform.DOMoveY(-0.8f, 1f);
+            transform.DOMoveY(startY, 1f);
             opened = false;
         }
     }

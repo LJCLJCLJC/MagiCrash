@@ -34,6 +34,7 @@ public class EnemyWolf : Enemy {
     {
         if (other.tag == "Player")
         {
+            GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, true);
             SetSpeed(1, 2);
             AI.target = other.transform;
             weapon.shooting = true;
@@ -47,6 +48,7 @@ public class EnemyWolf : Enemy {
     {
         if (other.tag == "Player")
         {
+            GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, false);
             SetSpeed(1, 2);
             AI.target = originTrans;
             weapon.shooting = false;

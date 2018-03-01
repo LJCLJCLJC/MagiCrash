@@ -23,4 +23,5 @@ public class GameEventDefine
     public const int GUIDE_OPEN = 100019;
     public const int GUIDE_OFF = 100020;
     public const int BOSS_BATTLE = 100021;
+    public const int CHANGE_ANTLER_MAGIC = 100022;
 }

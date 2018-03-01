@@ -8,7 +8,7 @@ public class SwitchGate : MonoBehaviour {
     public string OpenCode = "1";
     public float toPosY=8f;
     public float duration=3f;
-    private string nowCode = "";
+    public string nowCode = "";
 	void Start () {
         GameRoot.Instance.evt.AddListener(GameEventDefine.OPEN_GATE, OpenHelper);
 	}
@@ -29,12 +29,18 @@ public class SwitchGate : MonoBehaviour {
             }
             else if (nowCode.Length == OpenCode.Length)
             {
-                nowCode = "";
-                GameRoot.Instance.evt.CallEvent(GameEventDefine.RESET_SWITCH, GateId);
+                TimeLine.GetInstance().AddTimeEvent(ResetSwitch, 3f, null, gameObject);
+                
             }
         }
     }
 
+    private void ResetSwitch(object obj)
+    {
+        nowCode = "";
+        GameRoot.Instance.evt.CallEvent(GameEventDefine.RESET_SWITCH, GateId);
+        TimeLine.GetInstance().RemoveTimeEvent(ResetSwitch);
+    }
     private void OnDestroy()
     {
         GameRoot.Instance.evt.RemoveListener(GameEventDefine.OPEN_GATE, OpenHelper);

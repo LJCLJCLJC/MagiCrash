@@ -815,6 +815,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 23000010209362876, guid: af338a8b4a4be6440bdd7278e5edccc6,
+        type: 2}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4000010757136560, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}
       propertyPath: m_LocalPosition.x
       value: 68.292625
@@ -950,6 +955,35 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cc8ab5babd81be047a20ce355df5183d, type: 2}
+    - target: {fileID: 1000010375615780, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}
+      propertyPath: m_TagString
+      value: Antler
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010380107436, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}
+      propertyPath: m_TagString
+      value: Antler
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010850856490, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}
+      propertyPath: m_TagString
+      value: Antler
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010943948500, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}
+      propertyPath: m_TagString
+      value: Antler
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000010337420450, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}
+      propertyPath: m_TagString
+      value: Antler
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011457120502, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23000010209362876, guid: af338a8b4a4be6440bdd7278e5edccc6,
+        type: 2}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1fd5a4c57efcbd14db1c8f313d99653a, type: 2}
     m_RemovedComponents:
     - {fileID: 114000014036796824, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}
     - {fileID: 114073367845855820, guid: af338a8b4a4be6440bdd7278e5edccc6, type: 2}

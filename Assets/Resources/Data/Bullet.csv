@@ -1,5 +1,5 @@
 ﻿id(int),path(string),desc(string),effect(string),destroyTime(float)
 0,null,0,null,0
-1,Bullet01,小体积直线,explosion_stylized_small_originalFire,1
+1,Bullet01,小体积直线,explosion_stylized_small_originalFire,1.2
 2,Bullet02,大体积直线,explosion_stylized_small_originalFire,1
-3,Bullet03,大体积抛物线,explosion_stylized_small_originalFire,1
+3,Bullet03,大体积抛物线,explosion_stylized_small_demonFire,2

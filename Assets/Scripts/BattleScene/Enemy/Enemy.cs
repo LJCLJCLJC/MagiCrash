@@ -64,7 +64,7 @@ public class Enemy : MonoBehaviour
     }
     protected void DestroyObj(object obj)
     {
-        Debug.Log("die");
+        GameObject effect = Tools.CreateGameObject("Effects/zibao", transform.parent, transform.position, Vector3.one);
         Destroy(gameObject);
         ShowItem();
         GameRoot.Instance.evt.CallEvent(GameEventDefine.ENEMY_DIE, groupID);
@@ -75,6 +75,7 @@ public class Enemy : MonoBehaviour
         {
             StaticItemVo itemVo = StaticDataPool.Instance.staticItemPool.GetStaticDataVo(enemyVo.item);
             GameObject itemObj = Tools.CreateGameObject("Models/Items/" + itemVo.path, transform.parent, transform.position, Vector3.one);
+
             itemObj.GetComponent<Item>().Create(itemVo);
         }
     }

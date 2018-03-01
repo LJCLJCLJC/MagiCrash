@@ -109,7 +109,7 @@ public class StaticWeaponVo
     public string path;
     public int bulletId;
     public int damage;
-    public string effect;
+    public float color;
     public StaticWeaponVo(string[] al)
     {
         id = int.Parse(al[0]);
@@ -120,7 +120,7 @@ public class StaticWeaponVo
         path = al[5];
         bulletId = int.Parse(al[6]);
         damage = int.Parse(al[7]);
-        effect = al[8];
+        color = float.Parse(al[8]);
     }
 }
 public class StaticBulletVo

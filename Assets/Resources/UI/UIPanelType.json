@@ -35,6 +35,10 @@
         {
             "panelIDString": "PausePanel",
             "path": "UI/GameScene/PausePanel"
+        },
+        {
+            "panelIDString": "MapPanel",
+            "path": "UI/GameScene/MapPanel"
         }
     ]
 }

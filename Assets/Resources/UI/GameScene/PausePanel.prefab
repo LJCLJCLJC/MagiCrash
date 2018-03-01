@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 251cb82c4ca4005478d7a953664eb50b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panelID: 0
+  panelID: 9
   canvasGroup: {fileID: 225153271578148090}
   btnClose: {fileID: 0}
   btnResume: {fileID: 114712435986335330}

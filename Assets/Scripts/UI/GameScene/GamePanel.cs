@@ -1,11 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GamePanel : BasePanel
 {
 
     public Heart[] heart;
+
+    private void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            if (UIManager.Instance.GetTopPanel().panelID != Panel_ID.MapPanel)
+            {
+                UIManager.Instance.PushPanel(Panel_ID.MapPanel);
+            }
+            else if (UIManager.Instance.GetTopPanel().panelID == Panel_ID.MapPanel)
+            {
+                UIManager.Instance.PopPanel();
+            }
+        }
+        
+    }
     private PlayerData player;
     private void Start()
     {
@@ -22,14 +40,15 @@ public class GamePanel : BasePanel
         OnHpUpdate(null);
         GameRoot.Instance.evt.AddListener(GameEventDefine.PLAYER_DAMAGE, OnHpUpdate);
         GameRoot.Instance.evt.AddListener(GameEventDefine.SHOW_TIP, OnShowTip);
+        
     }
     public override void OnExit()
     {
         base.OnExit();
         GameRoot.Instance.evt.RemoveListener(GameEventDefine.PLAYER_DAMAGE, OnHpUpdate);
         GameRoot.Instance.evt.RemoveListener(GameEventDefine.SHOW_TIP, OnShowTip);
+        
     }
-
     public override void OnPause()
     {
         canvasGroup.blocksRaycasts = false;
@@ -64,7 +83,6 @@ public class GamePanel : BasePanel
         }
 
     }
-
     private void OnShowTip(object obj)
     {
         if(UIManager.Instance.GetTopPanel().panelID == Panel_ID.TipPanel)
