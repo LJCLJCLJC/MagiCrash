@@ -1952,7 +1952,7 @@ MonoBehaviour:
   AutoSpeed: 1
   ToTrot: 5
   ToRun: 6
-  debug: 1
+  debug: 0
 --- !u!114 &114762487004566936
 MonoBehaviour:
   m_ObjectHideFlags: 1

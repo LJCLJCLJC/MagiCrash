@@ -26,7 +26,11 @@ public class CameraMover : MonoBehaviour
             {
                 transform.DOMove(point[i].position, 0.6f);
                 transform.DORotate(point[i].rotation.eulerAngles, 0.6f);
-                GameRoot.Instance.evt.CallEvent(GameEventDefine.GAME_PAUSE, null);
+                if (index != 6)
+                {
+                    GameRoot.Instance.evt.CallEvent(GameEventDefine.GAME_PAUSE, null);
+                }
+
             }
         }
     }

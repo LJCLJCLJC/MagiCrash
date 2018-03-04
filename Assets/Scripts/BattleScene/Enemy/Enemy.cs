@@ -17,7 +17,7 @@ public class Enemy : MonoBehaviour
     public SphereCollider radius;
     public AnimalAIControl AI;
     public Animal animal;
-    protected EnemyWeapon weapon;
+    protected List<EnemyWeapon> weapon=new List<EnemyWeapon>();
     protected Transform originTrans;
     protected bool shoot;
     protected Vector3 shootDirect =new Vector3();
@@ -37,8 +37,8 @@ public class Enemy : MonoBehaviour
         for(int i = 0; i < enemyVo.weapon.Count; i++)
         {
             spawn = Tools.CreateGameObject("Models/Weapon/" + StaticDataPool.Instance.staticEnemyWeaponPool.GetStaticDataVo(enemyVo.weapon[i]).path);
-            weapon = spawn.GetComponent<EnemyWeapon>();
-            weapon.Create(enemyVo.weapon[i], transform);
+            weapon.Add(spawn.GetComponent<EnemyWeapon>());
+            weapon[i].Create(enemyVo.weapon[i], transform);
         }
         nowHealth = enemyVo.health;
         groupID = groupId;
@@ -59,7 +59,11 @@ public class Enemy : MonoBehaviour
     {
         animal.Death = true;
         shoot = false;
-        weapon.DestroyObj();
+        for(int i = 0; i < weapon.Count; i++)
+        {
+            weapon[i].DestroyObj();
+        }
+
         TimeLine.GetInstance().AddTimeEvent(DestroyObj, 5f, null, gameObject);
     }
     protected void DestroyObj(object obj)

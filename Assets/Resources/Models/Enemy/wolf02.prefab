@@ -2019,7 +2019,7 @@ MonoBehaviour:
   AutoSpeed: 1
   ToTrot: 1
   ToRun: 2
-  debug: 1
+  debug: 0
 --- !u!114 &114895491692735566
 MonoBehaviour:
   m_ObjectHideFlags: 1

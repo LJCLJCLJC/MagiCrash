@@ -7,7 +7,7 @@ public class SwitchGate : MonoBehaviour {
     public string GateId = "a1";
     public string OpenCode = "1";
     public float toPosY=8f;
-    public float duration=3f;
+    public float duration=4f;
     public string nowCode = "";
 	void Start () {
         GameRoot.Instance.evt.AddListener(GameEventDefine.OPEN_GATE, OpenHelper);
@@ -16,6 +16,7 @@ public class SwitchGate : MonoBehaviour {
     private void OpenGate()
     {
         transform.DOMoveY(toPosY, duration);
+        GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -1);
     }
     private void OpenHelper(object obj)
     {

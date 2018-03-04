@@ -10,13 +10,14 @@ public class Switch : MonoBehaviour {
     public bool opened = false;
     public float startY = -0.7f;
     public float endY = -0.9f;
+    public GameObject effect;
     private KeyValuePair<string, string> pair;
 	void Start ()
     {
         transform.position = new Vector3(transform.position.x, startY, transform.position.z);
         pair = new KeyValuePair<string, string>(gateId, code);
         GameRoot.Instance.evt.AddListener(GameEventDefine.RESET_SWITCH, ResetSwitch);
-        
+        effect.SetActive(false);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -24,7 +25,7 @@ public class Switch : MonoBehaviour {
         {
             opened = true;
             GameRoot.Instance.evt.CallEvent(GameEventDefine.OPEN_GATE, pair);
-            transform.DOMoveY(endY, 1f);
+            transform.DOMoveY(endY, 1f).OnComplete(delegate() { effect.SetActive(true); });
         }
     }
     private void ResetSwitch(object obj)
@@ -32,7 +33,7 @@ public class Switch : MonoBehaviour {
         string id = (string)obj;
         if (id == gateId)
         {
-            transform.DOMoveY(startY, 1f);
+            transform.DOMoveY(startY, 1f).OnComplete(delegate () { effect.SetActive(false); }); 
             opened = false;
         }
     }

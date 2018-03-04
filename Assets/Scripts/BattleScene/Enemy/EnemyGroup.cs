@@ -40,7 +40,8 @@ public class EnemyGroup : MonoBehaviour {
             GameObject empty = new GameObject("point");
             empty.transform.parent = transform;
             empty.transform.position = enemyGroupVo.unitPos[i];
-            goObj.GetComponent<Enemy>().Create(enemyVo,empty.transform,enemyGroupVo.id,waypointList);
+            goObj.GetComponent<Enemy>().Create(enemyVo, empty.transform, enemyGroupVo.id, waypointList);
+
         }
 
         GameRoot.Instance.evt.AddListener(GameEventDefine.ENEMY_DIE, OnEnemyDie);

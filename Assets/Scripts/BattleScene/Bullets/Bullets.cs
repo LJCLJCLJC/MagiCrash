@@ -131,5 +131,14 @@ public class Bullets : PoolItem {
                 effectPool.New().GetComponent<BulletEffect>().Create(transform.position);
             }
         }
+        else if (other.tag == "Shield" && owner == true)
+        {
+            Hide();
+            other.GetComponent<Shield>().Hurt(staticBulletVo.id);
+            if (effectPool != null)
+            {
+                effectPool.New().GetComponent<BulletEffect>().Create(transform.position);
+            }
+        }
     }
 }

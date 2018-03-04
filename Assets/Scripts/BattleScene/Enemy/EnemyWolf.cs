@@ -5,7 +5,7 @@ using MalbersAnimations;
 
 public class EnemyWolf : Enemy {
 
-
+    private int weaponIndex=0;
     public override void Create(StaticEnemyVo enemyVo, Transform origin, int groupId, List<Transform> list)
     {
         base.Create(enemyVo, origin, groupId, list);
@@ -27,7 +27,11 @@ public class EnemyWolf : Enemy {
     {
         if (animal.Death == false && GameRoot.Instance.CanMove)
         {
-            weapon.cb();
+            for(; weaponIndex < weapon.Count; weaponIndex++)
+            {
+                weapon[weaponIndex].cb();
+            }
+            weaponIndex = 0;
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -37,7 +41,10 @@ public class EnemyWolf : Enemy {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, true);
             SetSpeed(1, 2);
             AI.target = other.transform;
-            weapon.shooting = true;
+            for (int i=0; i < weapon.Count; i++)
+            {
+                weapon[i].shooting = true;
+            }
             if (enemyVo.state == EnemyOriginState.SLEEPING)
             {
                 animal.GetComponent<Animator>().SetBool(HashIDsAnimal.standHash, false);
@@ -51,7 +58,10 @@ public class EnemyWolf : Enemy {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, false);
             SetSpeed(1, 2);
             AI.target = originTrans;
-            weapon.shooting = false;
+            for (int i = 0; i < weapon.Count; i++)
+            {
+                weapon[i].shooting = false;
+            }
 
         }
     }

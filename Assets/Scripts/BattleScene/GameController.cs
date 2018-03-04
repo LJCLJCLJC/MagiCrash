@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
     public bool canOpen = false;
     public Transform leftButton;
     public Transform RightTop;
+    public Transform[] BossWayPoint;
     private PlayerData player;
     private int hasKey;
 
