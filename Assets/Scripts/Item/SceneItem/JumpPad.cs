@@ -19,7 +19,7 @@ public class JumpPad : MonoBehaviour
 
     private void Start()
     {
-        bezier = new Bezier(transform.position, top.position, target.position);
+        
     }
 
     private void Update()
@@ -41,6 +41,7 @@ public class JumpPad : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            bezier = new Bezier(transform.position, top.position, target.position);
             player = other.transform.root.gameObject;
             startTime = Time.time;
             act = true;

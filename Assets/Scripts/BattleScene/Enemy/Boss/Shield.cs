@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Shield : MonoBehaviour {
 
-    int health;
-    int Id;
-    int lowDamage;
-    int highDamage;
+    public int health;
+    public int Id;
+    public int lowDamage;
+    public int highDamage;
 
     public void Hurt(int bulletId)
     {

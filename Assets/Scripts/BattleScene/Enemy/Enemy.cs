@@ -30,7 +30,10 @@ public class Enemy : MonoBehaviour
     public virtual void Create(StaticEnemyVo enemyVo,Transform origin,int groupId, List<Transform> list)
     {
         this.enemyVo = enemyVo;
-        radius.radius = enemyVo.radius;
+        if (radius != null)
+        {
+            radius.radius = enemyVo.radius;
+        }
         animal = GetComponent<Animal>();
         waypointList = list;
         originTrans = waypointList[0];

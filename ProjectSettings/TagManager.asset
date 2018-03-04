@@ -10,6 +10,9 @@ TagManager:
   - StoneGate
   - boom
   - Antler
+  - Enemy
+  - EnemyBody
+  - Shield
   layers:
   - Default
   - TransparentFX
