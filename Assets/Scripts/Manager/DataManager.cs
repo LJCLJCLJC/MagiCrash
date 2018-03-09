@@ -73,6 +73,7 @@ public class DataManager
 
     public PlayerList GetAllPlayer()
     {
+        
         PlayerList pl=new PlayerList();
         StreamReader sr = null;
         try
@@ -95,7 +96,7 @@ public class DataManager
         playerList = pl;
         sr.Close();
         sr.Dispose();
-        return pl;
+        return playerList;
     }
 
     public void Delete(int id)
@@ -166,6 +167,20 @@ public class DataManager
         }
         return list;
     }
+
+    public List<int> GetOwnedItem(PlayerData player)
+    {
+        List<int> list = new List<int>();
+        string[] tipStr = player.ownedItem.Split('|');
+        for (int i = 0; i < tipStr.Length; i++)
+        {
+            if (tipStr[i] != "")
+            {
+                list.Add(int.Parse(tipStr[i]));
+            }
+        }
+        return list;
+    }
 }
 
 public class PlayerList
@@ -194,4 +209,6 @@ public class PlayerData
     public string hasKey;
     public string guideList;
     public string tipList;
+    public string ownedItem;
+    public bool showMapPoint;
 }

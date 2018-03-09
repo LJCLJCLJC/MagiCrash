@@ -39,7 +39,7 @@ public class JumpPad : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBody")
         {
             bezier = new Bezier(transform.position, top.position, target.position);
             player = other.transform.root.gameObject;

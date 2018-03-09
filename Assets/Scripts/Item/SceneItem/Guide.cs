@@ -15,7 +15,7 @@ public class Guide : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (id != 0 && !guideList.Contains(id) && other.tag == "Player")
+        if (id != 0 && !guideList.Contains(id) && other.tag == "PlayerBody")
         {
             if (target != null)
             {
@@ -25,7 +25,7 @@ public class Guide : MonoBehaviour
             GameRoot.Instance.GetNowPlayer().guideList += (id + "|");
             guideList = DataManager.Instance.GetGuideList(GameRoot.Instance.GetNowPlayer());
         }
-        else if (id == 0 && other.tag == "Player")
+        else if (id == 0 && other.tag == "PlayerBody")
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.GUIDE_OFF,null);
         }

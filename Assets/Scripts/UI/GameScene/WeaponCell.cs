@@ -24,10 +24,12 @@ public class WeaponCell : MonoBehaviour {
         List<int> weapons = DataManager.Instance.GetWeaponsId(player);
         if (weapons.Contains(1))
         {
+            select.gameObject.SetActive(true);
             weapon1.transform.parent.gameObject.SetActive(true);
         }
         else
         {
+            select.gameObject.SetActive(false);
             weapon1.transform.parent.gameObject.SetActive(false);
         }
         if (weapons.Contains(2))

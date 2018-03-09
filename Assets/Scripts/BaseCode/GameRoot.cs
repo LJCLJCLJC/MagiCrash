@@ -9,9 +9,11 @@ public class GameRoot : MonoBehaviour {
     public TimeLine timeLine;
     public ActivePool activePool;
     public string currentLoadScene;
+    public bool movingCamera = false;
     public Transform tsPlayer;
     private bool canMove = true;
     private PlayerData nowPlayer;
+    public int nowPlayerId;
 
     public bool CanMove
     {
@@ -50,7 +52,9 @@ public class GameRoot : MonoBehaviour {
 
     public void SetNowPlayer(int id)
     {
+        nowPlayerId = id;
         nowPlayer = DataManager.Instance.GetPlayer(id);
+
     }
     public PlayerData GetNowPlayer()
     {
@@ -63,6 +67,8 @@ public class GameRoot : MonoBehaviour {
     }
     private void LoadGame(object obj)
     {
+        DataManager.Instance.GetAllPlayer();
+        SetNowPlayer(nowPlayerId);
         tsPlayer = GameObject.FindGameObjectWithTag("Player").transform.root;
     }
     public void SaveGame(object obj)

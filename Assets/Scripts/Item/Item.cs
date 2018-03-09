@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && eated == false)
+        if (other.tag == "PlayerBody" && eated == false)
         {
             eated = true;
             switch (staticVo.affect)
@@ -29,36 +29,56 @@ public class Item : MonoBehaviour
                             player.nowHealth = player.maxHealth;
                         }
                         //todo callevent PlayerHpChange
-                        GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DAMAGE, null);
                     }
                     break;
                 case 1:
-                    if (staticVo.addType == 0)
+                    if (!DataManager.Instance.GetOwnedItem(player).Contains(3))
                     {
-                        player.maxHealth += (int)staticVo.value;
-                        //todo callevent PlayerMaxHpChange
-                        GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DAMAGE, null);
+                        if (staticVo.addType == 0)
+                        { 
+
+                            player.maxHealth += (int)staticVo.value;
+                            player.nowHealth = player.maxHealth;
+                            //todo callevent PlayerMaxHpChange
+                            player.ownedItem += "3|";
+                        }
                     }
                     break;
                 case 2:
-                    if (staticVo.addType == 0)
+                    if (!DataManager.Instance.GetOwnedItem(player).Contains(4))
                     {
-                        player.defence += (int)staticVo.value;
+                        if (staticVo.addType == 0)
+                        {
+                            player.defence += (int)staticVo.value;
+                            player.nowHealth = player.maxHealth;
+                            player.ownedItem += "4|";
+                        }
                     }
                     break;
                 case 3:
-                    if (staticVo.addType == 0)
+                    if (!DataManager.Instance.GetOwnedItem(player).Contains(5))
                     {
-                        player.powerPlus += (int)staticVo.value;
+                        if (staticVo.addType == 0)
+                        {
+                            player.powerPlus += (int)staticVo.value;
+                            player.nowHealth = player.maxHealth;
+                            player.ownedItem += "5|";
+                        }
                     }
                     break;
                 case 4:
-                    if (staticVo.addType == 1)
+                    if (!DataManager.Instance.GetOwnedItem(player).Contains(6))
                     {
-                        player.shootSpeedPlus *= staticVo.value;
+                        if (staticVo.addType == 1)
+                        {
+                            player.shootSpeedPlus -= staticVo.value;
+                            player.nowHealth = player.maxHealth;
+                            player.ownedItem += "6|";
+                        }
                     }
                     break;
             }
+            GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DAMAGE, null);
             Tools.CreateGameObject("Effects/ItemEffects/"+staticVo.effect, other.transform.root.GetComponent<Player>().tsBody, Vector3.zero, Vector3.one);
             Destroy(gameObject);
         }

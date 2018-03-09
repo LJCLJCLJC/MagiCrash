@@ -39,6 +39,14 @@
         {
             "panelIDString": "MapPanel",
             "path": "UI/GameScene/MapPanel"
+        },
+        {
+            "panelIDString": "GameOverPanel",
+            "path": "UI/GameScene/GameOverPanel"
+        },
+        {
+            "panelIDString": "LevelClearPanel",
+            "path": "UI/GameScene/LevelClearPanel"
         }
     ]
 }

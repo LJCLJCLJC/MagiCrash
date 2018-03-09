@@ -18,6 +18,18 @@ public class Tools : MonoBehaviour
 
         return obj;
     }
+    public static GameObject CreateGameObject(string url, Transform parent, Vector3 pos)
+    {
+        Object @object = Resources.Load(url);
+        if (@object == null)
+        {
+            return null;
+        }
+        GameObject obj = Instantiate(@object as GameObject);
+        obj.transform.parent = parent;
+        obj.transform.localPosition = pos;
+        return obj;
+    }
     public static GameObject CreateGameObject(string url, Transform parent)
     {
         GameObject obj = Instantiate(Resources.Load(url) as GameObject);

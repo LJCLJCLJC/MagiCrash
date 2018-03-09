@@ -15,7 +15,7 @@ public class WeaponItem : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBody")
         {
             GetComponent<Collider>().enabled = false;
             GetWeapon();

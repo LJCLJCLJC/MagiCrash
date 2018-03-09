@@ -22,7 +22,12 @@ public class EnemyWolf : Enemy {
         }
         SetSpeed(5, 6);
     }
-
+    protected override void Die()
+    {
+        base.Die();
+        GameRoot.Instance.evt.CallEvent(GameEventDefine.OUT_BATTLE, null);
+        radius.enabled = false;
+    }
     private void Update()
     {
         if (animal.Death == false && GameRoot.Instance.CanMove)
@@ -36,9 +41,14 @@ public class EnemyWolf : Enemy {
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBody")
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, true);
+            if (!dead)
+            {
+                GameRoot.Instance.evt.CallEvent(GameEventDefine.IN_BATTLE, null);
+            }
+
             SetSpeed(1, 2);
             AI.target = other.transform;
             for (int i=0; i < weapon.Count; i++)
@@ -47,15 +57,19 @@ public class EnemyWolf : Enemy {
             }
             if (enemyVo.state == EnemyOriginState.SLEEPING)
             {
-                animal.GetComponent<Animator>().SetBool(HashIDsAnimal.standHash, false);
+                animal.Attack1 = true;
             }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBody")
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, false);
+            if (!dead)
+            {
+                GameRoot.Instance.evt.CallEvent(GameEventDefine.OUT_BATTLE, null);
+            }
             SetSpeed(1, 2);
             AI.target = originTrans;
             for (int i = 0; i < weapon.Count; i++)

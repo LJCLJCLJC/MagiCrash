@@ -26,7 +26,7 @@ public class Keys : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBody")
         {
             player.hasKey += ("|" + id);
             GameRoot.Instance.GetNowPlayer().startPosition = GameController.Instance.tsPlayer.position.x + "#" + GameController.Instance.tsPlayer.position.y + "#" + GameController.Instance.tsPlayer.position.z;

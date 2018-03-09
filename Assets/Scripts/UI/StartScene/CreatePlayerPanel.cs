@@ -37,10 +37,6 @@ public class CreatePlayerPanel : BasePanel
         base.OnEnter(param);
         Init(param);
     }
-    public override void OnPause()
-    {
-        canvasGroup.blocksRaycasts = false;
-    }
     public override void OnExit()
     {
         base.OnExit();
@@ -128,10 +124,10 @@ public class CreatePlayerPanel : BasePanel
     {
         PlayerData player = new PlayerData();
         player.id = cellIndex;
-        player.name = inputName.text;
+        player.name = inputName.text == "" ? "Player": inputName.text ;
         player.open = true;
-        player.nowHealth = 12;
-        player.maxHealth = 12;
+        player.nowHealth = 16;
+        player.maxHealth = 16;
         player.defence = 0;
         player.shootSpeedPlus = 1.0f;
         player.powerPlus = 1;
@@ -142,10 +138,12 @@ public class CreatePlayerPanel : BasePanel
         player.antler = dropAntler.value;
         player.spot = dropSpot.value;
         player.color = dropColor.value;
-        player.startPosition = "48#0#22";
+        player.startPosition = "48#1#22";
         player.hasKey = "Level1_1";
         player.guideList = "";
         player.tipList = "";
+        player.ownedItem = "";
+        player.showMapPoint = false;
         DataManager.Instance.Save(player);
         GameRoot.Instance.SetNowPlayer(cellIndex);
         LoadManager.Load(SceneName.Level1_1);

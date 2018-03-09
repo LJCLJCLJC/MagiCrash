@@ -6,7 +6,7 @@ public class CameraTrigger : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBody")
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, 6);
         }
@@ -14,7 +14,7 @@ public class CameraTrigger : MonoBehaviour {
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBody")
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -1);
         }

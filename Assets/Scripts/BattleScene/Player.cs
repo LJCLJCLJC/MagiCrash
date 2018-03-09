@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using MalbersAnimations.Utilities;
+using MalbersAnimations;
 
 public class Player : MonoBehaviour {
     public ActiveMeshes mesh;
@@ -12,6 +13,7 @@ public class Player : MonoBehaviour {
     public Transform tsBody;
     public Transform tsEffect;
     public Color color;
+    public Animal animal;
     private PlayerData nowPlayer;
 
     private void Start()
@@ -41,27 +43,36 @@ public class Player : MonoBehaviour {
     }
     public void Hurt(int damage)
     {
-        if (damage - nowPlayer.defence <= 1)
+        if (!GameController.Instance.isPausing)
         {
-            damage = 1;
-        }
-        else
-        {
-            damage -= nowPlayer.defence;
-        }
-        nowPlayer.nowHealth = nowPlayer.nowHealth - damage;
-        GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DAMAGE, null);
-        Debug.Log(nowPlayer.nowHealth);
-        if (nowPlayer.nowHealth <= 0)
-        {
-            Die();
-            GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DIE, null);
+            if (damage - nowPlayer.defence <= 1)
+            {
+                damage = 1;
+            }
+            else
+            {
+                damage -= nowPlayer.defence;
+            }
+            nowPlayer.nowHealth = nowPlayer.nowHealth - damage;
+        
+            GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DAMAGE, null);
+            Debug.Log(nowPlayer.nowHealth);
+            if (nowPlayer.nowHealth <= 0)
+            {
+                //Die();
+                //GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DIE, null);
 
+            }
         }
     }
     private void Die()
     {
         Debug.Log("die");
+        animal.Death = true;
+        UIManager.Instance.PushPanel(Panel_ID.GameOverPanel);
+        GameRoot.Instance.evt.CallEvent(GameEventDefine.GAME_PAUSE, null);
+        GameController.Instance.isPausing = true;
+
     }
     private void ChangeMagic(object obj)
     {

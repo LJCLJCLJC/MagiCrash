@@ -15,6 +15,14 @@ public class ChoosePlayerPanel : BasePanel
         base.OnEnter();
         Init();
     }
+    public override void OnPause()
+    {
+        base.OnPause();
+        for (int i = 0; i < cells.Length; i++)
+        {
+            cells[i].gameObject.SetActive(false);
+        }
+    }
     public override void OnResume()
     {
         base.OnResume();
@@ -23,6 +31,10 @@ public class ChoosePlayerPanel : BasePanel
     public override void OnExit()
     {
         base.OnExit();
+        for (int i = 0; i < cells.Length; i++)
+        {
+            cells[i].gameObject.SetActive(false);
+        }
         GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, 0);
     }
     private void Init()
@@ -31,6 +43,7 @@ public class ChoosePlayerPanel : BasePanel
         {
             PlayerData pd = DataManager.Instance.GetPlayer(i);
             cells[i].Create(pd);
+            cells[i].gameObject.SetActive(true);
         }
     }
 }

@@ -23,10 +23,12 @@ public class TipPanel : BasePanel {
     public override void OnExit()
     {
         base.OnExit();
+        //GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -1);
         btnDesc.onClick.RemoveAllListeners();
     }
     private void BtnClick(Button btn)
     {
+        if (GameRoot.Instance.movingCamera == true) return;
         index++;
         if (index < desc.Count)
         {

@@ -13,6 +13,7 @@ TagManager:
   - Enemy
   - EnemyBody
   - Shield
+  - PlayerBody
   layers:
   - Default
   - TransparentFX

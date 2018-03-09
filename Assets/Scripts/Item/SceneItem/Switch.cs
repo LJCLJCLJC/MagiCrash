@@ -21,7 +21,7 @@ public class Switch : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && opened == false)
+        if (other.tag == "PlayerBody" && opened == false)
         {
             opened = true;
             GameRoot.Instance.evt.CallEvent(GameEventDefine.OPEN_GATE, pair);

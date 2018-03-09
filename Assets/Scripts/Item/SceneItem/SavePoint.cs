@@ -13,7 +13,7 @@ public class SavePoint : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "PlayerBody")
         {
             if (ifNowPos)
             {

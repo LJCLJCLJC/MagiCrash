@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraController : MonoBehaviour {
+public class CameraController : MonoBehaviour
+{
 
     public Transform target;
     public float smooth;
@@ -10,19 +11,28 @@ public class CameraController : MonoBehaviour {
     public Vector3 v3;
     public Vector3 targetPosition;
     public Vector3 targetRotation;
+    public float sensitivityX=1f;
 
-    private bool canMove=true;
+    private bool canMove = true;
 
-	void Start () {
+    void Start()
+    {
         GameRoot.Instance.evt.AddListener(GameEventDefine.MOVE_CAMERA, PauseCam);
     }
 
-	void LateUpdate () {
+    void LateUpdate()
+    {
         if (canMove)
         {
             targetPosition = target.position + v3;
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smooth);
-            transform.rotation = Quaternion.Euler(targetRotation);
+            transform.parent.position = Vector3.Lerp(transform.position, targetPosition, smooth);
+            //transform.rotation = Quaternion.Euler(targetRotation);
+            if (Input.GetMouseButton(1))
+            {
+                transform.RotateAround(target.position,Vector3.up, Input.GetAxis("Mouse X") * sensitivityX);
+            }
+            
+
         }
     }
 

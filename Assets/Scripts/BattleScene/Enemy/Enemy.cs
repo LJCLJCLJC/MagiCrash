@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     protected int nowHealth = 0;
     protected int groupID = -1;
     protected List<Transform> waypointList;
+    protected bool dead = false;
 
     public virtual void Create(StaticEnemyVo enemyVo,Transform origin,int groupId, List<Transform> list)
     {
@@ -49,19 +50,23 @@ public class Enemy : MonoBehaviour
     }
     public virtual void Hurt(int i)
     {
-        Debug.Log("damage");
-        nowHealth -= i;
-        //animal.Damaged = true;
-        if (nowHealth <= 0 && !animal.Death)
+        if (!GameController.Instance.isPausing)
         {
-            Die();
+            if (dead == true) return;
+            nowHealth -= i;
+            //animal.Damaged = true;
+            if (nowHealth <= 0 && !animal.Death)
+            {
+                Die();
+            }
         }
-
     }
-    protected void Die()
+    protected virtual void Die()
     {
+        AI.target = null;
         animal.Death = true;
         shoot = false;
+        dead = true;
         for(int i = 0; i < weapon.Count; i++)
         {
             weapon[i].DestroyObj();

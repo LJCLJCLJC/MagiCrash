@@ -139,9 +139,10 @@ GameObject:
   - component: {fileID: 114654597089499566}
   - component: {fileID: 114301362713898864}
   - component: {fileID: 114142950910152332}
+  - component: {fileID: 135015813697325214}
   m_Layer: 20
   m_Name: Player
-  m_TagString: Player
+  m_TagString: PlayerBody
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1453,7 +1454,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1062114197780954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.7, y: 10.598, z: 250.04}
+  m_LocalPosition: {x: 145.567, y: 62.01, z: 469.6}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4915115858716476}
@@ -1804,7 +1805,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1443245729763432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.721, y: 1.397, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4388676877314498}
@@ -2322,6 +2323,7 @@ MonoBehaviour:
   tsBody: {fileID: 4997419952891560}
   tsEffect: {fileID: 4003940696187102}
   color: {r: 0, g: 0, b: 0, a: 0}
+  animal: {fileID: 114918862206468332}
 --- !u!114 &114193927406122834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2842,6 +2844,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.38
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135015813697325214
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062114197780954}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.93
+  m_Center: {x: 0, y: 0.89, z: 0.5}
 --- !u!135 &135181350000891218
 SphereCollider:
   m_ObjectHideFlags: 1

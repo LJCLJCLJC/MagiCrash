@@ -113,7 +113,7 @@ public class Bullets : PoolItem {
                 effectPool.New().GetComponent<BulletEffect>().Create(transform.position);
             }
         }
-        else if (other.tag == "Player" && owner == false)
+        else if (other.tag == "PlayerBody" && owner == false)
         {
             Hide();
             other.transform.root.GetComponent<Player>().Hurt(damage);

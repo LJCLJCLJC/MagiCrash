@@ -12,6 +12,7 @@ public class BossLevel1_1 : Enemy {
     private int state = 1;
     public override void Create(StaticEnemyVo enemyVo, Transform origin, int groupId, List<Transform> list)
     {
+        transform.localScale = new Vector3(3, 3, 3);
         GameRoot.Instance.evt.AddListener(GameEventDefine.BOSS_BATTLE, InBossBattle);
         base.Create(enemyVo, origin, groupId, list);
         SetSpeed(0, 0);
@@ -44,7 +45,7 @@ public class BossLevel1_1 : Enemy {
     public override void Hurt(int i)
     {
         base.Hurt(i);
-        if ((nowHealth <= enemyVo.health*2 / 3)&& (nowHealth >= enemyVo.health / 3)&&state!=2)
+        if ((nowHealth <= enemyVo.health*2 / 3)&& (nowHealth >= enemyVo.health / 3)&&state!=2&&dead==false)
         {
             State_2();
         }
@@ -52,10 +53,12 @@ public class BossLevel1_1 : Enemy {
         {
             State_3();
         }
-        if (nowHealth <= 0)
-        {
-            Die();
-        }
+    }
+
+    protected override void Die()
+    {
+        base.Die();
+        GameRoot.Instance.evt.CallEvent(GameEventDefine.LEVEL_CLEAR, null);
     }
     private void InBossBattle(object obj)
     {
@@ -74,6 +77,8 @@ public class BossLevel1_1 : Enemy {
         weapon[1].gameObject.SetActive(true);
         weapon[0].shooting = false;
         weapon[1].shooting = true;
+        GameObject itemObj = Tools.CreateGameObject("Models/Items/healthItem02", transform.parent, transform.position, Vector3.one);
+        itemObj.GetComponent<Item>().Create(StaticDataPool.Instance.staticItemPool.GetStaticDataVo(2));
 
     }
     private void State_3()
@@ -83,6 +88,8 @@ public class BossLevel1_1 : Enemy {
         weapon[0].gameObject.SetActive(true);
         weapon[0].shooting = true;
         weapon[1].shooting = true;
+        GameObject itemObj = Tools.CreateGameObject("Models/Items/healthItem02", transform.parent, transform.position, Vector3.one);
+        itemObj.GetComponent<Item>().Create(StaticDataPool.Instance.staticItemPool.GetStaticDataVo(2));
     }
     private void OnDestroy()
     {

@@ -63,7 +63,7 @@ public class MousePoint : MonoBehaviour {
         }
         else
         {
-            transform.DOMove(new Vector3(guidePos.x, HitPosition.y+2, guidePos.z),1);
+            transform.DOMove(new Vector3(guidePos.x, HitPosition.y+2, guidePos.z),2);
         }
 
 

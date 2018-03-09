@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  Id: 1
+  Id: 2
   lowDamage: 1
   highDamage: 5
 --- !u!114 &114515307992421348
@@ -1455,7 +1455,7 @@ MonoBehaviour:
   movementS2: 2
   movementS3: 3
   maxAngleSlope: 45
-  GotoSleep: 15
+  GotoSleep: 100
   SnapToGround: 30
   FallRayDistance: 0.15
   FallRayMultiplier: 1

@@ -3,3 +3,5 @@
 1,enemyWeaopn01,0.5,25,enemyWeapon01,1,1,1
 2,enemyWeaopn02,0.2,15,enemyWeapon01,1,2,2
 3,enemyWeaopn03,0.2,15,enemyWeapon01,1,3,2
+4,boss1_1Weapon01,0.3,30,enemyWeapon01,1,2,1
+5,boss1_1Weapon02,0.1,30,enemyWeapon01,1,3,2

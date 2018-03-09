@@ -60,7 +60,7 @@ public class EnemyWeapon : MonoBehaviour {
         if (shootBegin > weaponVo.chargeTime)
         {
             direction = (player.transform.position-owner.position).normalized;
-            transform.DOMove(new Vector3(direction.x * 3, 1f, direction.z * 3) + owner.position, 1);
+            transform.DOMove(new Vector3(direction.x * 2, 1f, direction.z * 2) + owner.position, 0.2f);
             transform.rotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
             shootBegin = 0;
             if (shooting == true)

@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     public Transform leftButton;
     public Transform RightTop;
     public Transform[] BossWayPoint;
+    public GameObject teleport;
     private PlayerData player;
     private int hasKey;
 
@@ -19,13 +20,18 @@ public class GameController : MonoBehaviour {
     private void Awake()
     {
         Instance = this;
+        GameRoot.Instance.evt.CallEvent(GameEventDefine.LOAD_GAME, null);
     }
     private void Start ()
     {
-        GameRoot.Instance.evt.AddListener(GameEventDefine.GET_KEY, UpDateHasKey);
+        GameRoot.Instance.evt.AddListener(GameEventDefine.GET_KEY, UpdateHasKey);
+        GameRoot.Instance.evt.AddListener(GameEventDefine.LEVEL_CLEAR, OnLevelClear);
+
         player = GameRoot.Instance.GetNowPlayer();
+        if (player.nowHealth < 4) player.nowHealth = 4;
+        teleport.SetActive(false);
         UIManager.Instance.PushPanel(Panel_ID.GamePanel);
-        UpDateHasKey(null);
+        UpdateHasKey(null);
 	}
 
     private void Update()
@@ -38,7 +44,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void UpDateHasKey(object obj)
+    private void UpdateHasKey(object obj)
     {
         hasKey = 0;
         string[] keyStr = player.hasKey.Split('|');
@@ -54,9 +60,14 @@ public class GameController : MonoBehaviour {
             canOpen = true;
         }
     }
+    private void OnLevelClear(object obj)
+    {
+        teleport.SetActive(true);
+    }
     private void OnDestroy()
     {
-        GameRoot.Instance.evt.RemoveListener(GameEventDefine.GET_KEY, UpDateHasKey);
+        GameRoot.Instance.evt.RemoveListener(GameEventDefine.GET_KEY, UpdateHasKey);
+        GameRoot.Instance.evt.RemoveListener(GameEventDefine.LEVEL_CLEAR, OnLevelClear);
     }
 
 }

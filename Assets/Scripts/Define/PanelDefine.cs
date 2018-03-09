@@ -14,4 +14,6 @@ public enum Panel_ID
     TipPanel,
     PausePanel,
     MapPanel,
+    GameOverPanel,
+    LevelClearPanel,
 }

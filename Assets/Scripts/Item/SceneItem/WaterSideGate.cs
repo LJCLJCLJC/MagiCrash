@@ -24,14 +24,14 @@ public class WaterSideGate : MonoBehaviour {
     private void OnCollisionEnter(Collision collision)
     {
        
-        if (collision.gameObject.tag == "Player"&&GameController.Instance.canOpen == false&&canTip==true)
+        if (collision.gameObject.tag == "PlayerBody"&&GameController.Instance.canOpen == false&&canTip==true)
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.SHOW_TIP, 12);
             Debug.Log(collision.gameObject.name);
             time = Time.time;
             canTip = false;
         }
-        else if(collision.gameObject.tag == "Player" && GameController.Instance.canOpen == true)
+        else if(collision.gameObject.tag == "PlayerBody" && GameController.Instance.canOpen == true)
         {
             gameObject.GetComponent<MeshCollider>().convex = true;
             gameObject.GetComponent<MeshCollider>().isTrigger = true;

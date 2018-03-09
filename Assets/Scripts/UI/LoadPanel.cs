@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadPanel : MonoBehaviour
 {
-    public Scrollbar bar;
+    public Image bar;
     private AsyncOperation op;
 
 
@@ -17,9 +17,9 @@ public class LoadPanel : MonoBehaviour
     private void Update()
     {
         if (op.progress < 0.9f)
-            bar.value = op.progress;
+            bar.fillAmount = op.progress;
         else
-            bar.value = 1;
+            bar.fillAmount = 1;
     }
     IEnumerator LoadScene()
     {

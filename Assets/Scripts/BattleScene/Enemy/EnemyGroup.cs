@@ -36,7 +36,7 @@ public class EnemyGroup : MonoBehaviour {
         for (int i = 0; i < enemyList.Count; i++)
         {
             StaticEnemyVo enemyVo = StaticDataPool.Instance.staticEnemyPool.GetStaticDataVo(enemyList[i]);
-            GameObject goObj = Tools.CreateGameObject("Models/Enemy/"+enemyVo.path, transform.parent,enemyGroupVo.unitPos[i],Vector3.one);
+            GameObject goObj = Tools.CreateGameObject("Models/Enemy/"+enemyVo.path, transform.parent,enemyGroupVo.unitPos[i]);
             GameObject empty = new GameObject("point");
             empty.transform.parent = transform;
             empty.transform.position = enemyGroupVo.unitPos[i];
