@@ -186,6 +186,7 @@ MonoBehaviour:
   originRotation: {x: 0, y: 0, z: 0, w: 0}
   originScale: {x: 0, y: 0, z: 0}
   rigidbody: {fileID: 54436957393280422}
+  audio: {fileID: 82577471016438606}
 --- !u!136 &136769279030136790
 CapsuleCollider:
   m_ObjectHideFlags: 1

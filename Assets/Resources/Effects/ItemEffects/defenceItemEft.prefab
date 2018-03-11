@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 199323721508056610}
   - component: {fileID: 114995083376714206}
   - component: {fileID: 82866678578141744}
+  - component: {fileID: 114729706063600986}
   m_Layer: 0
   m_Name: defenceItemEft
   m_TagString: Untagged
@@ -185,6 +186,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114729706063600986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1879808238864084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d757d92975ea4e647abda645703593eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 0, y: 0, z: 0}
+  ifNowPos: 1
 --- !u!114 &114995083376714206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -198,6 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deleteTime: 3
   particles: []
+  audio: {fileID: 82866678578141744}
 --- !u!198 &198038104356926008
 ParticleSystem:
   m_ObjectHideFlags: 1

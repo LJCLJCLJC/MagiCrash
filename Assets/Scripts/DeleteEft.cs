@@ -5,10 +5,15 @@ public class DeleteEft : MonoBehaviour
 {
 	public float deleteTime;
 	public ParticleSystem[] particles;
+    public AudioSource audio;
 	void Start()
 	{
 		TimeLine.GetInstance().AddTimeEvent(DestroyThis,deleteTime,null,this.gameObject);
-	}
+        if (audio != null)
+        {
+            audio.volume = DataManager.Instance.GetSettingData().effectVolume;
+        }
+    }
 
 	public void ResetDeleteTime()
 	{

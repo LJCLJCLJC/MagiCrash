@@ -1455,7 +1455,7 @@ Transform:
   m_GameObject: {fileID: 1062114197780954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 145.567, y: 62.01, z: 469.6}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 4915115858716476}
   - {fileID: 4411728696227474}
@@ -2447,7 +2447,7 @@ MonoBehaviour:
     input: Jump
     key: 0
     GetPressed: 0
-  - active: 1
+  - active: 0
     name: Shift
     type: 0
     input: Fire3
@@ -2770,7 +2770,7 @@ MonoBehaviour:
   WalkSpeed: 0
   TrotSpeed: 0
   RunSpeed: 0
-  TurnSpeed: 3
+  TurnSpeed: 15
   WalkAnimSpeed: 1.1
   TrotAnimSpeed: 1.1
   RunAnimSpeed: 1.6
@@ -2778,7 +2778,7 @@ MonoBehaviour:
   movementS2: 2
   movementS3: 3
   maxAngleSlope: 35
-  GotoSleep: 60
+  GotoSleep: 100
   SnapToGround: 20
   FallRayDistance: 0.25
   FallRayMultiplier: 1

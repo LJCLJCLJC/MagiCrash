@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour
     private List<StaticEnemyGroupVo> groupList;
     private void Start()
     {
-        GameRoot.Instance.evt.AddListener(GameEventDefine.LOAD_GAME,OnUpdate);
+        //GameRoot.Instance.evt.AddListener(GameEventDefine.LOAD_GAME,OnUpdate);
         OnUpdate(null);
     }
 
@@ -44,7 +44,7 @@ public class EnemyManager : MonoBehaviour
     }
     private void OnDestroy()
     {
-        GameRoot.Instance.evt.RemoveListener(GameEventDefine.LOAD_GAME, OnUpdate);
+       // GameRoot.Instance.evt.RemoveListener(GameEventDefine.LOAD_GAME, OnUpdate);
 
     }
 }

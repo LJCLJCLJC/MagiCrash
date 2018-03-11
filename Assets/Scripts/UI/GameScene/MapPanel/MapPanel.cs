@@ -72,20 +72,20 @@ public class MapPanel : BasePanel
         int index = 0;
         if (DataManager.Instance.GetTipList(player).Contains(8))
         {
-            GameObject obj = Tools.CreateGameObject("UI/GameScene/MapPanel/TipCell", tsTip, new Vector3(460, 410 - index * 240, 0), Vector3.one);
+            GameObject obj = Tools.CreateGameObject("UI/GameScene/MapPanel/TipCell", tsTip, new Vector3(410, 460 - index * 220, 0), Vector3.one);
             obj.GetComponent<TipCell>().Create(8);
             index++;
         }
         if (DataManager.Instance.GetTipList(player).Contains(9))
         {
-            GameObject obj = Tools.CreateGameObject("UI/GameScene/MapPanel/TipCell", tsTip, new Vector3(460, 410 - index * 240, 0), Vector3.one);
+            GameObject obj = Tools.CreateGameObject("UI/GameScene/MapPanel/TipCell", tsTip, new Vector3(410, 460 - index * 220, 0), Vector3.one);
             obj.GetComponent<TipCell>().Create(9);
             index++;
         }
         if (DataManager.Instance.GetTipList(player).Contains(10))
         {
-            GameObject obj = Tools.CreateGameObject("UI/GameScene/MapPanel/TipCell", tsTip, new Vector3(460, 410 - index * 240, 0), Vector3.one);
-            obj.GetComponent<TipCell>().Create(8);
+            GameObject obj = Tools.CreateGameObject("UI/GameScene/MapPanel/TipCell", tsTip, new Vector3(410, 460 - index * 220, 0), Vector3.one);
+            obj.GetComponent<TipCell>().Create(10);
             index++;
         }
         //StaticDataPool.Instance.staticTipPool.GetStaticDataVo()

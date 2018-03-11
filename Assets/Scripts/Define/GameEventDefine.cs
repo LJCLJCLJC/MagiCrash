@@ -27,4 +27,7 @@ public class GameEventDefine
     public const int LEVEL_CLEAR = 100023;
     public const int IN_BATTLE = 100024;
     public const int OUT_BATTLE = 100025;
+    public const int SET_BGM_VOLUME = 100026;
+    public const int SET_EFFECT_VOLUME = 100027;
+    public const int SET_VIEW_SENSITIVE = 100028;
 }

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4427896059722470}
   - component: {fileID: 114809449219654254}
   - component: {fileID: 65487320767027538}
+  - component: {fileID: 114141266934369674}
   m_Layer: 8
   m_Name: defenceItem
   m_TagString: Untagged
@@ -172,6 +173,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114141266934369674
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1525914906188996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d757d92975ea4e647abda645703593eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 0, y: 0, z: 0}
+  ifNowPos: 1
 --- !u!114 &114809449219654254
 MonoBehaviour:
   m_ObjectHideFlags: 1

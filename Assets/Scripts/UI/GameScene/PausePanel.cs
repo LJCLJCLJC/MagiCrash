@@ -18,6 +18,11 @@ public class PausePanel : BasePanel {
         btnHome.onClick.AddListener(delegate () { BtnClick(btnHome); });
     }
 
+    public override void OnPause()
+    {
+        canvasGroup.blocksRaycasts = false;
+    }
+
     public override void OnExit()
     {
         base.OnExit();
@@ -40,6 +45,7 @@ public class PausePanel : BasePanel {
                 GameRoot.Instance.evt.CallEvent(GameEventDefine.GAME_RESUME, null);
                 break;
             case "btnSetting":
+                UIManager.Instance.PushPanel(Panel_ID.SettingPanel);
                 break;
             case "btnHome":
                 LoadManager.Load(SceneName.StartScene);

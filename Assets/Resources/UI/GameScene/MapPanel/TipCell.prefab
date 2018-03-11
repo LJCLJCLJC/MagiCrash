@@ -150,18 +150,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 3
     m_MaxSize: 50
-    m_Alignment: 3
+    m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\uFF08\u65F6\u7A7A\u65C5\u884C\u8005\u4ECE\u65B0\u6708\u542F\u7A0B\uFF0C\u56DE\u5230\u86FE\u7709\u6708\u7684\u7684\u65E5\u5B50...\uFF09"
+  m_Text: "\u5728\u86FE\u7709\u6708\u7684\u65E5\u5B50\uFF0C\u65C5\u884C\u8005\u89C1\u5230\u4E86\u5DE8\u5927\u7684\u5929\u5802\u51E4\u8776\uFF0C\u51E4\u8776\u8BF4\uFF1A\u201C\u672A\u6765\u516B\u5929\u540E\uFF0C\u4E00\u6837\u7684\u86FE\u7709\u6708\u7684\u65E5\u5B50\uFF0C\u4F60\u4F1A\u627E\u5230\u7B54\u6848..."
 --- !u!222 &222182508941580802
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -195,7 +195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 417.99, y: -87.4}
+  m_AnchoredPosition: {x: 399, y: -103.40849}
   m_SizeDelta: {x: 664.03, y: 142.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224067625140691810
@@ -233,6 +233,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1.2000122, y: 95.75}
+  m_AnchoredPosition: {x: 410, y: 460}
   m_SizeDelta: {x: 750, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}

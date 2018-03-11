@@ -11,13 +11,16 @@ public class CameraController : MonoBehaviour
     public Vector3 v3;
     public Vector3 targetPosition;
     public Vector3 targetRotation;
-    public float sensitivityX=1f;
+    public float maxSensitivityX = 10f;
+    private float sensitivityX;
 
     private bool canMove = true;
 
     void Start()
     {
         GameRoot.Instance.evt.AddListener(GameEventDefine.MOVE_CAMERA, PauseCam);
+        GameRoot.Instance.evt.AddListener(GameEventDefine.SET_VIEW_SENSITIVE, OnSetViewSensitivity);
+        sensitivityX = DataManager.Instance.GetSettingData().viewSensitive * maxSensitivityX;
     }
 
     void LateUpdate()
@@ -48,6 +51,11 @@ public class CameraController : MonoBehaviour
         {
             canMove = false;
         }
+    }
+
+    private void OnSetViewSensitivity(object obj)
+    {
+        sensitivityX = (float)obj * maxSensitivityX;
     }
 
     private void OnDestroy()

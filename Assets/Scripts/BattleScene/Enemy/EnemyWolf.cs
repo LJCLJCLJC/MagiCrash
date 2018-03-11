@@ -5,6 +5,7 @@ using MalbersAnimations;
 
 public class EnemyWolf : Enemy {
 
+
     private int weaponIndex=0;
     public override void Create(StaticEnemyVo enemyVo, Transform origin, int groupId, List<Transform> list)
     {
@@ -43,13 +44,12 @@ public class EnemyWolf : Enemy {
     {
         if (other.tag == "PlayerBody")
         {
-            GameRoot.Instance.evt.CallEvent(GameEventDefine.MAGIC_CHANGE, true);
             if (!dead)
             {
                 GameRoot.Instance.evt.CallEvent(GameEventDefine.IN_BATTLE, null);
             }
 
-            SetSpeed(1, 2);
+            SetSpeed(0, 0);
             AI.target = other.transform;
             for (int i=0; i < weapon.Count; i++)
             {

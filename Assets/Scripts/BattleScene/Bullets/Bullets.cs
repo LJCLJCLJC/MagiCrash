@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Bullets : PoolItem {
+public class Bullets : PoolItem
+{
     public Rigidbody rigidbody;
+    public AudioSource audio;
     private int damage = 0;
     private bool owner = false;//true(player) false(enemy)
     private float flySpeed;
@@ -19,14 +21,15 @@ public class Bullets : PoolItem {
         base.Init();
         GameRoot.Instance.evt.AddListener(GameEventDefine.GAME_PAUSE, OnPause);
         GameRoot.Instance.evt.AddListener(GameEventDefine.GAME_RESUME, OnResume);
+        audio.volume = DataManager.Instance.GetSettingData().effectVolume;
     }
     private void OnPause(object obj)
     {
- 
+
     }
     private void OnResume(object obj)
     {
- 
+
     }
     public override void ResetItem()
     {
@@ -50,12 +53,12 @@ public class Bullets : PoolItem {
     }
     private void FixedUpdate()
     {
-        if (transform.position.y <= 0 && addForce == false&&staticBulletVo.id == 3)
+        if (transform.position.y <= 0 && addForce == false && staticBulletVo.id == 3)
         {
-            rigidbody.velocity += Vector3.up*2f;
+            rigidbody.velocity += Vector3.up * 2f;
         }
     }
-    public void Fly(float flySpeed,Quaternion quaternion,Vector3 pos,int damage,bool owner,int id, ObjectPool objectPool=null)
+    public void Fly(float flySpeed, Quaternion quaternion, Vector3 pos, int damage, bool owner, int id, ObjectPool objectPool = null)
     {
         this.id = id;
         transform.position = pos;
@@ -71,9 +74,10 @@ public class Bullets : PoolItem {
         staticBulletVo = StaticDataPool.Instance.staticBulletPool.GetStaticDataVo(id);
         switch (id)
         {
-            case 1:Type_1();break;
-            case 2:Type_1();break;
-            case 3:Type_3();break;
+            case 1: Type_1(); break;
+            case 2: Type_1(); break;
+            case 3: Type_3(); break;
+            case 4: Type_1(); break;
         }
         TimeLine.GetInstance().AddTimeEvent(HideByTime, staticBulletVo.destroyTime, null, gameObject);
     }
@@ -104,7 +108,7 @@ public class Bullets : PoolItem {
                 effectPool.New().GetComponent<BulletEffect>().Create(transform.position);
             }
         }
-        else if(other.tag=="EnemyBody"&&owner==true)
+        else if (other.tag == "EnemyBody" && owner == true)
         {
             Hide();
             other.transform.root.GetComponentInParent<Enemy>().Hurt(damage);

@@ -13,6 +13,8 @@ public enum EnemyOriginState
 
 public class Enemy : MonoBehaviour
 {
+    private StepTrigger[] step;
+    public AudioSource audio;
     public StaticEnemyVo enemyVo;
     public SphereCollider radius;
     public AnimalAIControl AI;
@@ -30,6 +32,15 @@ public class Enemy : MonoBehaviour
 
     public virtual void Create(StaticEnemyVo enemyVo,Transform origin,int groupId, List<Transform> list)
     {
+        step = GetComponentsInChildren<StepTrigger>();
+        if (step != null)
+        {
+            for (int i = 0; i < step.Length; i++)
+            {
+                step[i].volume = DataManager.Instance.GetSettingData().effectVolume;
+            }
+        }
+        audio.volume = DataManager.Instance.GetSettingData().effectVolume;
         this.enemyVo = enemyVo;
         if (radius != null)
         {
@@ -46,7 +57,18 @@ public class Enemy : MonoBehaviour
         }
         nowHealth = enemyVo.health;
         groupID = groupId;
-       
+        GameRoot.Instance.evt.AddListener(GameEventDefine.SET_EFFECT_VOLUME, OnSetEffectVolume);
+    }
+    private void OnSetEffectVolume(object obj)
+    {
+        if (step != null)
+        {
+            for (int i = 0; i < step.Length; i++)
+            {
+                step[i].volume = DataManager.Instance.GetSettingData().effectVolume;
+            }
+        }
+        audio.volume = DataManager.Instance.GetSettingData().effectVolume;
     }
     public virtual void Hurt(int i)
     {
@@ -99,5 +121,6 @@ public class Enemy : MonoBehaviour
     private void OnDestroy()
     {
         TimeLine.GetInstance().RemoveTimeEvent(DestroyObj);
+        GameRoot.Instance.evt.RemoveListener(GameEventDefine.SET_EFFECT_VOLUME, OnSetEffectVolume);
     }
 }

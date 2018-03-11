@@ -8,16 +8,16 @@ public class SwitchGate : MonoBehaviour {
     public string OpenCode = "1";
     public float toPosY=8f;
     public float duration=4f;
-    public string nowCode = "";
+    public int cameraPos = -1;
+    private string nowCode = "";
 	void Start () {
         GameRoot.Instance.evt.AddListener(GameEventDefine.OPEN_GATE, OpenHelper);
 	}
 
     private void OpenGate()
     {
-        transform.DOMoveY(toPosY, duration);
-        GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -1);
-    }
+        GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, cameraPos);
+        transform.DOMoveY(toPosY, duration).OnComplete<Tween>(delegate() { GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -1); });    }
     private void OpenHelper(object obj)
     {
         KeyValuePair<string, string> pair = (KeyValuePair<string, string>)obj;

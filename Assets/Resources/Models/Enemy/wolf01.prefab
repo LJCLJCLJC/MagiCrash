@@ -1848,7 +1848,7 @@ MonoBehaviour:
   TurnSpeed: 10
   WalkAnimSpeed: 0.8
   TrotAnimSpeed: 0.8
-  RunAnimSpeed: 0.8
+  RunAnimSpeed: 1
   movementS1: 1
   movementS2: 2
   movementS3: 3
@@ -2013,6 +2013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbd981c35503572459d81df4b095b1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audio: {fileID: 82400115697305384}
   radius: {fileID: 135141580951587584}
   AI: {fileID: 114693009075537974}
   animal: {fileID: 114494707926667040}

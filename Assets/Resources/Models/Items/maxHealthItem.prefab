@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4029783841692678}
   - component: {fileID: 114020692120528428}
   - component: {fileID: 65810321788857930}
+  - component: {fileID: 114829273023016620}
   m_Layer: 8
   m_Name: maxHealthItem
   m_TagString: Untagged
@@ -183,3 +184,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e8681b843322945a19a3e4f7509809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114829273023016620
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202102009034868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d757d92975ea4e647abda645703593eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPoint: {x: 0, y: 0, z: 0}
+  ifNowPos: 1

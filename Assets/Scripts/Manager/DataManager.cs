@@ -20,6 +20,7 @@ public class DataManager
     }
 
     private PlayerList playerList=new PlayerList();
+    private SettingData settingData = new SettingData();
 
     public void Save(PlayerData player)
     {
@@ -181,6 +182,54 @@ public class DataManager
         }
         return list;
     }
+
+    public void SaveSetting(SettingData data)
+    {
+        string jsonInfo = JsonUtility.ToJson(data);
+
+        StreamWriter sw;
+        FileInfo t = new FileInfo(Application.persistentDataPath + "//settingData.json");
+        if (!t.Exists)
+        {
+            sw = t.CreateText();
+        }
+        else
+        {
+            sw = t.CreateText();
+
+        }
+        sw.Write(jsonInfo);
+        sw.Close();
+        sw.Dispose();
+    }
+
+    public SettingData GetSetting()
+    {
+        StreamReader sr = null;
+        try
+        {
+            sr = File.OpenText(Application.persistentDataPath + "//settingData.json");
+        }
+        catch (Exception e)
+        {
+            Debug.Log("设置文件不存在" + e.Message);
+            return null;
+        }
+
+
+        string jsonStr = sr.ReadToEnd();
+        SettingData jsonInfo = JsonUtility.FromJson<SettingData>(jsonStr);
+
+        sr.Close();
+        sr.Dispose();
+        settingData = jsonInfo;
+        return settingData;
+    }
+
+    public SettingData GetSettingData()
+    {
+        return settingData;
+    }
 }
 
 public class PlayerList
@@ -211,4 +260,11 @@ public class PlayerData
     public string tipList;
     public string ownedItem;
     public bool showMapPoint;
+}
+[Serializable]
+public class SettingData
+{
+    public float bgmVolume;
+    public float effectVolume;
+    public float viewSensitive;
 }

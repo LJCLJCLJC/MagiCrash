@@ -265,6 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deleteTime: 3
   particles: []
+  audio: {fileID: 82147003595382366}
 --- !u!198 &198064243005446138
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -12,7 +12,7 @@ id(int),name(string),weapon(float),speed(float),radius(float),path(string),healt
 10,wolf03(walking),3,1,15,wolf03,24,WALKING,3
 11,wolf03(walking),3,1,15,wolf03,24,WALKING,4
 12,wolf03(walking),3,1,15,wolf03,24,WALKING,5
-13,wolf03(walking),3,1,15,wolf03,24,SLEEPING,6
+13,wolf03(walking),3,1,30,wolf03,24,SLEEPING,6
 14,wolf01(sleep),1,1,30,wolf01,16,SLEEPING,0
 15,wolf02(sleep),2,1,30,wolf02,16,SLEEPING,0
 16,wolf01(walking),1,1,30,wolf01,16,WALKING,0

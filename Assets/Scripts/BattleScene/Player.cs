@@ -14,12 +14,14 @@ public class Player : MonoBehaviour {
     public Transform tsEffect;
     public Color color;
     public Animal animal;
+    private StepTrigger[] step;
     private PlayerData nowPlayer;
 
     private void Start()
     {
         GameRoot.Instance.evt.AddListener(GameEventDefine.MAGIC_CHANGE, ChangeMagic);
         GameRoot.Instance.evt.AddListener(GameEventDefine.CHANGE_ANTLER_MAGIC, ChangeAntlerMagic);
+        GameRoot.Instance.evt.AddListener(GameEventDefine.SET_EFFECT_VOLUME, OnSetEffectVolume);
         nowPlayer = GameRoot.Instance.GetNowPlayer();
         Init();
     }
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour {
     {
         GameRoot.Instance.evt.RemoveListener(GameEventDefine.MAGIC_CHANGE, ChangeMagic);
         GameRoot.Instance.evt.RemoveListener(GameEventDefine.CHANGE_ANTLER_MAGIC, ChangeAntlerMagic);
+        GameRoot.Instance.evt.RemoveListener(GameEventDefine.SET_EFFECT_VOLUME, OnSetEffectVolume);
     }
     private void Init()
     {
@@ -34,13 +37,33 @@ public class Player : MonoBehaviour {
         mesh.ChangeMesh(0, nowPlayer.antler);
         mesh.ChangeMesh(2, nowPlayer.spot);
         mesh.ChangeMesh(1, 1);
-
+        animal.Shift = true;
         string[] PosStr = nowPlayer.startPosition.Split('#');
         Vector3 startPos = new Vector3(float.Parse(PosStr[0]), float.Parse(PosStr[1]), float.Parse(PosStr[2]));
         transform.position = startPos;
         antlerMagic.transform.parent = tsAntler[nowPlayer.antler-1];
         antlerMagic.gameObject.SetActive(false);
+        step = GetComponentsInChildren<StepTrigger>();
+        if (step != null)
+        {
+            for (int i = 0; i < step.Length; i++)
+            {
+                step[i].volume = DataManager.Instance.GetSettingData().effectVolume;
+            }
+        }
     }
+
+    private void OnSetEffectVolume(object obj)
+    {
+        if (step != null)
+        {
+            for (int i = 0; i < step.Length; i++)
+            {
+                step[i].volume = DataManager.Instance.GetSettingData().effectVolume;
+            }
+        }
+    }
+
     public void Hurt(int damage)
     {
         if (!GameController.Instance.isPausing)
@@ -59,8 +82,8 @@ public class Player : MonoBehaviour {
             Debug.Log(nowPlayer.nowHealth);
             if (nowPlayer.nowHealth <= 0)
             {
-                //Die();
-                //GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DIE, null);
+                Die();
+                GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DIE, null);
 
             }
         }
@@ -77,7 +100,7 @@ public class Player : MonoBehaviour {
     private void ChangeMagic(object obj)
     {
         bool show = (bool)obj;
-        if (show)
+        if (show && DataManager.Instance.GetWeaponsId(nowPlayer).Count > 0) 
         {
             mesh.ChangeMesh(1, 0);
             material.SetMaterial(1, nowPlayer.color);

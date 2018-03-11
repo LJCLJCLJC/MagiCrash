@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class LevelClearPanel : BasePanel {
 
@@ -9,7 +10,9 @@ public class LevelClearPanel : BasePanel {
     public Button btnHome;
     public override void OnEnter()
     {
-        base.OnEnter();
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.DOFade(1, 0.5f);
+        gameObject.SetActive(true);
         btnSetting.onClick.AddListener(delegate () { BtnClick(btnSetting); });
         btnHome.onClick.AddListener(delegate () { BtnClick(btnHome); });
     }
