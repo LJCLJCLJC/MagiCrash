@@ -47,6 +47,11 @@
         {
             "panelIDString": "LevelClearPanel",
             "path": "UI/GameScene/LevelClearPanel"
+        },
+        {
+            "panelIDString": "ConsolePanel",
+            "path": "UI/GameScene/ConsolePanel"
         }
+
     ]
 }

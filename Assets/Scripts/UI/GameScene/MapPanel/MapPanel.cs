@@ -63,8 +63,16 @@ public class MapPanel : BasePanel
         playerX = GameController.Instance.tsPlayer.position.x - centerX;
         playerY = GameController.Instance.tsPlayer.position.z - centerY;
         playerIcon.transform.localPosition = new Vector3((playerX / width) * map.rectTransform.sizeDelta.x, (playerY / height) * map.rectTransform.sizeDelta.y, 0);
+        //if (Input.GetKeyUp(KeyCode.Escape))
+        //{
+        //    UIManager.Instance.PopPanel();
+        //}
     }
 
+    public override void OnPause()
+    {
+        canvasGroup.blocksRaycasts = false;
+    }
     private void UpdateTip()
     {
 

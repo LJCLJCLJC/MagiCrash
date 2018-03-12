@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour {
     public Transform RightTop;
     public Transform[] BossWayPoint;
     public GameObject teleport;
+    public bool UnStoppable = false;
     private PlayerData player;
     private int hasKey;
 
@@ -28,7 +29,7 @@ public class GameController : MonoBehaviour {
         GameRoot.Instance.evt.AddListener(GameEventDefine.LEVEL_CLEAR, OnLevelClear);
 
         player = GameRoot.Instance.GetNowPlayer();
-        if (player.nowHealth < 4) player.nowHealth = 4;
+        if (player.nowHealth < 8) player.nowHealth = 8;
         teleport.SetActive(false);
         UIManager.Instance.PushPanel(Panel_ID.GamePanel);
         UpdateHasKey(null);

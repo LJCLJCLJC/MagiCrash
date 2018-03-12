@@ -42,7 +42,10 @@ public class TipPanel : BasePanel {
         {
             UIManager.Instance.PopPanel();
             GameController.Instance.showingTip = false;
-            GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -1);
+            if (camPos[index - 1] != -1)
+            {
+                GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -2);
+            }
         }
     }
 }

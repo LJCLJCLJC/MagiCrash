@@ -29,18 +29,15 @@ public class EnemyGroup : MonoBehaviour {
         for (int i = 0; i < waypointList.Count - 1; i++)
         {
             waypointList[i].GetComponent<MWayPoint>().NextWaypoint = waypointList[i + 1];
-            waypointList[i].GetComponent<MWayPoint>().StoppingDistance = 0.5f;
+            waypointList[i].GetComponent<MWayPoint>().StoppingDistance = 1f;
         }
         waypointList[waypointList.Count - 1].GetComponent<MWayPoint>().NextWaypoint = waypointList[0];
-        waypointList[waypointList.Count - 1].GetComponent<MWayPoint>().StoppingDistance = 0.5f;
+        waypointList[waypointList.Count - 1].GetComponent<MWayPoint>().StoppingDistance = 1f;
         for (int i = 0; i < enemyList.Count; i++)
         {
             StaticEnemyVo enemyVo = StaticDataPool.Instance.staticEnemyPool.GetStaticDataVo(enemyList[i]);
             GameObject goObj = Tools.CreateGameObject("Models/Enemy/"+enemyVo.path, transform.parent,enemyGroupVo.unitPos[i]);
-            GameObject empty = new GameObject("point");
-            empty.transform.parent = transform;
-            empty.transform.position = enemyGroupVo.unitPos[i];
-            goObj.GetComponent<Enemy>().Create(enemyVo, empty.transform, enemyGroupVo.id, waypointList);
+            goObj.GetComponent<Enemy>().Create(enemyVo, enemyGroupVo.id, waypointList);
 
         }
 

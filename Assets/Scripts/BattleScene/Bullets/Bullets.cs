@@ -100,8 +100,13 @@ public class Bullets : PoolItem
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Wall")
+        if (other.tag == "Wall"|| other.tag == "Ground")
         {
+            if (staticBulletVo.id == 3)
+            {
+                rigidbody.velocity += Vector3.up * 14f;
+                return;
+            }
             Hide();
             if (effectPool != null)
             {

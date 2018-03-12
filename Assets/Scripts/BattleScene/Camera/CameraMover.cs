@@ -17,19 +17,24 @@ public class CameraMover : MonoBehaviour
         int index = (int)obj;
         if (index == -1)
         {
+            GameRoot.Instance.movingCamera = false;
+            return;
+        }
+        if (index == -2)
+        {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.GAME_RESUME, null);
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.Euler(0, 0, 0);
             GameRoot.Instance.movingCamera = false;
             return;
         }
-        for(int i = 0; i < point.Length; i++)
+        for (int i = 0; i < point.Length; i++)
         {
             if (index == i)
             {
                 GameRoot.Instance.movingCamera = true;
                 transform.DOMove(point[i].position, 0.6f);
-                transform.DORotate(point[i].rotation.eulerAngles, 0.6f).OnComplete<Tween>(delegate() { GameRoot.Instance.movingCamera = false; });
+                transform.DORotate(point[i].rotation.eulerAngles, 0.6f).OnComplete<Tween>(delegate () { GameRoot.Instance.movingCamera = false; });
                 if (index != 6)
                 {
                     GameRoot.Instance.evt.CallEvent(GameEventDefine.GAME_PAUSE, null);

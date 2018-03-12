@@ -130,7 +130,7 @@ public class CreatePlayerPanel : BasePanel
         player.maxHealth = 16;
         player.defence = 0;
         player.shootSpeedPlus = 1.0f;
-        player.powerPlus = 0;
+        player.powerPlus = 1;
         player.weapons = "0";
         player.clearedEnemyGroup = "";
         player.nowLevel = SceneName.Level1_1;

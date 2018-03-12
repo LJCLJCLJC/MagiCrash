@@ -59,7 +59,6 @@ public class DataManager
     {
         if (i >= playerList.playerList.Count || i < 0)
         {
-            Debug.Log("不存在存档");
             return null;
         }
         else if(playerList.playerList[i].open != false)
@@ -82,7 +81,6 @@ public class DataManager
             sr = File.OpenText(Application.persistentDataPath+"//playerData.json");
         }catch(Exception e)
         {
-            Debug.Log("存档文件不存在"+e.Message);
             return null;
         }
 
@@ -212,7 +210,6 @@ public class DataManager
         }
         catch (Exception e)
         {
-            Debug.Log("设置文件不存在" + e.Message);
             return null;
         }
 

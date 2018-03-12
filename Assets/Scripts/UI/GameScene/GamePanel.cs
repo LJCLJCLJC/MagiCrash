@@ -12,6 +12,12 @@ public class GamePanel : BasePanel
     public GameObject attackIcon;
     public GameObject defanceIcon;
     public GameObject speedIcon;
+    private PlayerData player;
+
+    private void Start()
+    {
+
+    }
 
     private void Update()
     {
@@ -26,13 +32,20 @@ public class GamePanel : BasePanel
                 UIManager.Instance.PopPanel();
             }
         }
-        
-    }
-    private PlayerData player;
-    private void Start()
-    {
+        if (Input.GetKeyUp(KeyCode.Backslash))
+        {
+            if (UIManager.Instance.GetTopPanel().panelID != Panel_ID.ConsolePanel && !GameController.Instance.isPausing)
+            {
+                UIManager.Instance.PushPanel(Panel_ID.ConsolePanel);
+            }
+            else if (UIManager.Instance.GetTopPanel().panelID == Panel_ID.ConsolePanel && !GameController.Instance.isPausing)
+            {
+                UIManager.Instance.PopPanel();
+            }
+        }
 
     }
+
     public override void OnEnter()
     {
         base.OnEnter();
@@ -63,7 +76,6 @@ public class GamePanel : BasePanel
     {
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = 1;
-        Debug.Log("OnPause:" + panelID);
     }
     private void OnHpUpdate(object obj)
     {
@@ -111,7 +123,8 @@ public class GamePanel : BasePanel
     {
         if(UIManager.Instance.GetTopPanel().panelID == Panel_ID.TipPanel)
         {
-            UIManager.Instance.GetTopPanel().OnEnter(obj);
+            UIManager.Instance.PopPanel();
+            UIManager.Instance.PushPanel(Panel_ID.TipPanel, obj);
         }
         else
         {

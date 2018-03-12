@@ -27,7 +27,6 @@ public class WaterSideGate : MonoBehaviour {
         if (collision.gameObject.tag == "PlayerBody"&&GameController.Instance.canOpen == false&&canTip==true)
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.SHOW_TIP, 12);
-            Debug.Log(collision.gameObject.name);
             time = Time.time;
             canTip = false;
         }

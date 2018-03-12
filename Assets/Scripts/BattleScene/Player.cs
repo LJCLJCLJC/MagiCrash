@@ -68,6 +68,7 @@ public class Player : MonoBehaviour {
     {
         if (!GameController.Instance.isPausing)
         {
+            if (GameController.Instance.UnStoppable) return;
             if (damage - nowPlayer.defence <= 1)
             {
                 damage = 1;
@@ -79,7 +80,6 @@ public class Player : MonoBehaviour {
             nowPlayer.nowHealth = nowPlayer.nowHealth - damage;
         
             GameRoot.Instance.evt.CallEvent(GameEventDefine.PLAYER_DAMAGE, null);
-            Debug.Log(nowPlayer.nowHealth);
             if (nowPlayer.nowHealth <= 0)
             {
                 Die();
@@ -90,7 +90,6 @@ public class Player : MonoBehaviour {
     }
     private void Die()
     {
-        Debug.Log("die");
         animal.Death = true;
         UIManager.Instance.PushPanel(Panel_ID.GameOverPanel);
         GameRoot.Instance.evt.CallEvent(GameEventDefine.GAME_PAUSE, null);

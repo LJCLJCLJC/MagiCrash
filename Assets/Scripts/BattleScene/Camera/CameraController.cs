@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
     private void PauseCam(object obj)
     {
         int index = (int)obj;
-        if (index == -1)
+        if (index == -2 || index == -1)
         {
             canMove = true;
             GameRoot.Instance.evt.CallEvent(GameEventDefine.GAME_RESUME, null);

@@ -11,8 +11,8 @@ public class WeaponController : MonoBehaviour
     public Transform mousePoint;
 
     private PlayerData nowPlayer;
-    private List<StaticWeaponVo> weaponList=new List<StaticWeaponVo>();
-    private List<Weapon> weapons=new List<Weapon>();
+    private List<StaticWeaponVo> weaponList = new List<StaticWeaponVo>();
+    private List<Weapon> weapons;
     private int nowWeapon;
     private Weapon shotWeapon;
     private int floorMask;
@@ -33,16 +33,16 @@ public class WeaponController : MonoBehaviour
     }
     private void Update()
     {
-        if (Input.GetMouseButton(0)&&nowWeapon!=0&&GameRoot.Instance.CanMove)
+        if (Input.GetMouseButton(0) && nowWeapon != 0 && GameRoot.Instance.CanMove)
         {
-            if (shotBegin > shotWeapon.weaponVo.chargeTime*nowPlayer.shootSpeedPlus)
+            if (shotBegin > shotWeapon.weaponVo.chargeTime * nowPlayer.shootSpeedPlus)
             {
                 shotWeapon.Shot();
                 shotBegin = 0;
             }
             shotBegin += Time.deltaTime;
         }
-        if (Input.GetKeyUp(KeyCode.Alpha1)&&weaponList.Contains(StaticDataPool.Instance.staticWeaponPool.GetStaticDataVo(1)))
+        if (Input.GetKeyUp(KeyCode.Alpha1) && weaponList.Contains(StaticDataPool.Instance.staticWeaponPool.GetStaticDataVo(1)))
         {
             GameRoot.Instance.evt.CallEvent(GameEventDefine.CHANGE_WEAPON, 1);
         }
@@ -51,7 +51,7 @@ public class WeaponController : MonoBehaviour
             GameRoot.Instance.evt.CallEvent(GameEventDefine.CHANGE_WEAPON, 2);
         }
     }
-    
+
     private void FixedUpdate()
     {
         if (GameRoot.Instance.CanMove)
@@ -65,7 +65,7 @@ public class WeaponController : MonoBehaviour
         GameRoot.Instance.evt.RemoveListener(GameEventDefine.CHANGE_WEAPON, SetWeapon);
         GameRoot.Instance.evt.RemoveListener(GameEventDefine.GET_WEAPON, GetWeapon);
     }
-    
+
     private void OnUpdate(object obj)
     {
         Init();
@@ -75,6 +75,7 @@ public class WeaponController : MonoBehaviour
     {
         Tools.ClearChildFromParent(shootSpwan);
         nowPlayer = GameRoot.Instance.GetNowPlayer();
+        weapons = new List<Weapon>();
         weaponList = DataManager.Instance.GetWeapons(nowPlayer);
         if (weaponList.Count == 1)
         {
@@ -90,7 +91,7 @@ public class WeaponController : MonoBehaviour
         }
         for (int i = 1; i < weaponList.Count; i++)
         {
-            Weapon weapon = Tools.CreateGameObject("Models/Weapon/" + weaponList[i].path, shootSpwan,Vector3.zero,Vector3.one).GetComponent<Weapon>();
+            Weapon weapon = Tools.CreateGameObject("Models/Weapon/" + weaponList[i].path, shootSpwan, Vector3.zero, Vector3.one).GetComponent<Weapon>();
             weapon.gameObject.SetActive(false);
             weapon.Create(weaponList[i].id);
             if (weapon.weaponVo.id == nowWeapon)
@@ -170,12 +171,12 @@ public class WeaponController : MonoBehaviour
             {
                 target.y = player.position.y - 1f;
             }
-            
+
             transform.LookAt(target);
             if (mousePoint != null)
             {
                 mousePoint.position = Vector3.Lerp(mousePoint.position, floorHit.point, 0.2f);
-                
+
             }
         }
     }

@@ -28,7 +28,12 @@ public class SavePoint : MonoBehaviour {
     }
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(startPoint, 1);
+        if (!ifNowPos)
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireSphere(startPoint, 1);
+            Gizmos.DrawLine(transform.position, startPoint);
+        }
+
     }
 }

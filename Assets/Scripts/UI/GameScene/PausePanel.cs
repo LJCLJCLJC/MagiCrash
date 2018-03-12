@@ -9,6 +9,7 @@ public class PausePanel : BasePanel {
     public Button btnRestart;
     public Button btnSetting;
     public Button btnHome;
+    private bool show = false;
 	public override void OnEnter()
     {
         base.OnEnter();
@@ -16,6 +17,15 @@ public class PausePanel : BasePanel {
         btnResume.onClick.AddListener(delegate () { BtnClick(btnResume); });
         btnSetting.onClick.AddListener(delegate () { BtnClick(btnSetting); });
         btnHome.onClick.AddListener(delegate () { BtnClick(btnHome); });
+        show = true;
+    }
+
+    private void Update()
+    {
+        //if (show && Input.GetKeyUp(KeyCode.Escape))
+        //{
+        //    UIManager.Instance.PopPanel();
+        //}
     }
 
     public override void OnPause()
@@ -30,6 +40,7 @@ public class PausePanel : BasePanel {
         btnResume.onClick.RemoveAllListeners();
         btnSetting.onClick.RemoveAllListeners();
         btnHome.onClick.RemoveAllListeners();
+        show = false;
     }
     private void BtnClick(Button button)
     {

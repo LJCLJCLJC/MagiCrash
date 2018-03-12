@@ -21,6 +21,7 @@ public class BasePanel : MonoBehaviour
 
     public virtual void OnEnter()
     {
+        transform.SetAsLastSibling();
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1;
         gameObject.SetActive(true);
@@ -31,26 +32,22 @@ public class BasePanel : MonoBehaviour
         canvasGroup.blocksRaycasts = true;
         canvasGroup.DOFade(1,0.2f);
         gameObject.SetActive(true);
-        Debug.Log("OnEnter:" + panelID);
 
     }
     public virtual void OnPause()
     {
         canvasGroup.blocksRaycasts = false;
         canvasGroup.DOFade(0, 0.2f);
-        Debug.Log("OnPause:"+ panelID);
     }
     public virtual void OnResume()
     {
         canvasGroup.blocksRaycasts = true;
         canvasGroup.DOFade(1, 0.2f);
-        Debug.Log("OnResume:" + panelID);
     }
     public virtual void OnExit()
     {
         canvasGroup.blocksRaycasts = false;
         canvasGroup.DOFade(0, 0.2f);
-        Debug.Log("OnExit:" + panelID);
     }
 
     private void CloseClick()

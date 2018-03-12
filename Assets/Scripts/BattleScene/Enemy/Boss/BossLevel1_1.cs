@@ -10,11 +10,11 @@ public class BossLevel1_1 : Enemy {
     private Transform[] wayPointStart;
     private bool active = false;
     private int state = 1;
-    public override void Create(StaticEnemyVo enemyVo, Transform origin, int groupId, List<Transform> list)
+    public override void Create(StaticEnemyVo enemyVo, int groupId, List<Transform> list)
     {
         transform.localScale = new Vector3(3, 3, 3);
         GameRoot.Instance.evt.AddListener(GameEventDefine.BOSS_BATTLE, InBossBattle);
-        base.Create(enemyVo, origin, groupId, list);
+        base.Create(enemyVo, groupId, list);
         SetSpeed(0, 0);
         shield.SetActive(false);
         weapon[1].gameObject.SetActive(false);
@@ -63,6 +63,7 @@ public class BossLevel1_1 : Enemy {
     private void InBossBattle(object obj)
     {
         active = true;
+        //animal.Attack1 = true;
         AI.target = wayPointStart[0];
         gameObject.GetComponent<Animator>().SetBool(HashIDsAnimal.standHash, false);
         weapon[0].shooting = true;

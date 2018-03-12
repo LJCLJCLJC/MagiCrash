@@ -1294,7 +1294,7 @@ Rigidbody:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939389991462954}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 1000
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 1
@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  Id: 2
+  Id: 3
   lowDamage: 1
   highDamage: 5
 --- !u!114 &114515307992421348
@@ -1537,7 +1537,7 @@ MonoBehaviour:
   movementS2: 2
   movementS3: 3
   maxAngleSlope: 45
-  GotoSleep: 100
+  GotoSleep: 0
   SnapToGround: 30
   FallRayDistance: 0.15
   FallRayMultiplier: 1
@@ -1762,7 +1762,7 @@ NavMeshAgent:
   m_Height: 1.2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 3
 --- !u!198 &198413827833272358
 ParticleSystem:
   m_ObjectHideFlags: 1

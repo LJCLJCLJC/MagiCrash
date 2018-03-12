@@ -9,7 +9,7 @@ public class TipsPoint : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player"&& !GameController.Instance.showingTip)
+        if (other.tag=="Player")
         {
             List<int> list = DataManager.Instance.GetTipList(GameRoot.Instance.GetNowPlayer());
             if (repeat)

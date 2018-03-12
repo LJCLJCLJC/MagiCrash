@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
     protected List<Transform> waypointList;
     protected bool dead = false;
 
-    public virtual void Create(StaticEnemyVo enemyVo,Transform origin,int groupId, List<Transform> list)
+    public virtual void Create(StaticEnemyVo enemyVo,int groupId, List<Transform> list)
     {
         step = GetComponentsInChildren<StepTrigger>();
         if (step != null)

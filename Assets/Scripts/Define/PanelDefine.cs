@@ -16,4 +16,5 @@ public enum Panel_ID
     MapPanel,
     GameOverPanel,
     LevelClearPanel,
+    ConsolePanel,
 }

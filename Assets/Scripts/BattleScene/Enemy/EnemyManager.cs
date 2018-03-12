@@ -20,6 +20,24 @@ public class EnemyManager : MonoBehaviour
 
     private List<int> clearList;
     private List<StaticEnemyGroupVo> groupList;
+    private List<StaticEnemyGroupVo> levelList = new List<StaticEnemyGroupVo>();
+    private List<EnemyGroup> enemyGroupList = new List<EnemyGroup>();
+
+    private void Awake()
+    {
+        groupList = StaticDataPool.Instance.staticEnemyGroupPool.GetStaticDataPool();
+        for (int i = 0; i < groupList.Count; i++)
+        {
+
+            if (groupList[i].level == SceneManager.GetActiveScene().name)
+            {
+                GameObject goObj = Tools.CreateGameObject("Models/Enemy/EnemyGroup", transform.parent);
+                goObj.name = "EnemyGroup" + groupList[i].id;
+                enemyGroupList.Add(goObj.GetComponent<EnemyGroup>());
+                levelList.Add(groupList[i]);
+            }
+        }
+    }
     private void Start()
     {
         //GameRoot.Instance.evt.AddListener(GameEventDefine.LOAD_GAME,OnUpdate);
@@ -28,17 +46,11 @@ public class EnemyManager : MonoBehaviour
 
     private void OnUpdate(object obj)
     {
-        clearList = DataManager.Instance.GetClearedEnemyGroups(GameRoot.Instance.GetNowPlayer());
-        groupList = StaticDataPool.Instance.staticEnemyGroupPool.GetStaticDataPool();
-        for (int i = 0; i < groupList.Count; i++)
+       
+        for (int i = 0; i < levelList.Count; i++)
         {
-            
-            if (groupList[i].level == SceneManager.GetActiveScene().name)
-            {
-                GameObject goObj = Tools.CreateGameObject("Models/Enemy/EnemyGroup", transform.parent);
-                goObj.name = "EnemyGroup" + groupList[i].id;
-                goObj.GetComponent<EnemyGroup>().Create(groupList[i]);
-            }
+
+            enemyGroupList[i].Create(levelList[i]);
         }
 
     }

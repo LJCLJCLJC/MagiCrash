@@ -17,7 +17,7 @@ public class SwitchGate : MonoBehaviour {
     private void OpenGate()
     {
         GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, cameraPos);
-        transform.DOMoveY(toPosY, duration).OnComplete<Tween>(delegate() { GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -1); });    }
+        transform.DOMoveY(toPosY, duration).OnComplete<Tween>(delegate() { GameRoot.Instance.evt.CallEvent(GameEventDefine.MOVE_CAMERA, -2); });    }
     private void OpenHelper(object obj)
     {
         KeyValuePair<string, string> pair = (KeyValuePair<string, string>)obj;

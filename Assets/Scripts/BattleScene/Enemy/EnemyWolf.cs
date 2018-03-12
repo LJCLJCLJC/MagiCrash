@@ -7,9 +7,9 @@ public class EnemyWolf : Enemy {
 
 
     private int weaponIndex=0;
-    public override void Create(StaticEnemyVo enemyVo, Transform origin, int groupId, List<Transform> list)
+    public override void Create(StaticEnemyVo enemyVo, int groupId, List<Transform> list)
     {
-        base.Create(enemyVo, origin, groupId, list);
+        base.Create(enemyVo, groupId, list);
         switch (enemyVo.state)
         {
             case EnemyOriginState.SLEEPING:
@@ -21,7 +21,7 @@ public class EnemyWolf : Enemy {
             default:
                 break;
         }
-        SetSpeed(5, 6);
+        SetSpeed(4, 5);
     }
     protected override void Die()
     {

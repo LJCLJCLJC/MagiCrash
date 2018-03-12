@@ -22,7 +22,6 @@ public class Weapon : MonoBehaviour
     }
     public void Shot()
     {
-        Debug.Log("shot");
         int damage = weaponVo.damage + GameRoot.Instance.GetNowPlayer().powerPlus;
         bulletsPool.New().GetComponent<Bullets>().Fly(weaponVo.speed, transform.parent.parent.rotation, transform.position, damage,true,weaponVo.bulletId, effectPool);
 

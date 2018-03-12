@@ -74,7 +74,6 @@ public class GameRoot : MonoBehaviour {
     public void SaveGame(object obj)
     {
         DataManager.Instance.Save(nowPlayer);
-        Debug.Log("Saved");
     }
 
     private void OnPause(object obj)
